@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
+import { CustomResponse } from "@/helpers/commonHelpers";
 
 /**
  * TODO: Refactor Response.json using factory functions
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
 
       const newUser = new UserModel({
         username,
+        email,
         password: hasedPassword,
         verifyCode,
         verifyCodeExpiry: expiryDate,
@@ -72,10 +74,11 @@ export async function POST(request: Request) {
       }, {status: 500})
     }
 
-    return Response.json({
+    return CustomResponse({
       success: true,
-      message: "User registered successfully. Please verify your email"
-    }, {status: 200})
+      message: "User registered successfully. Please verify your email",
+      status: 200
+    });
 
   } catch (error) {
     console.error('Error regsitering user', error);
