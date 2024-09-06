@@ -14,7 +14,9 @@ export async function middleware(request: NextRequest) {
      if(token && isSpecifiedUrl) {
           return NextResponse.redirect(new URL('/dashboard', request.url))
      }
-     // return NextResponse.redirect(new URL('/home', request.url))
+     if(!token && url.pathname.startsWith('/dashboard')) {
+          return NextResponse.redirect(new URL('/sign-in', request.url))
+     }
 }
  
 // See "Matching Paths" below to learn more
