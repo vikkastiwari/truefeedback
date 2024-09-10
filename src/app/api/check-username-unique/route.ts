@@ -47,7 +47,7 @@ export async function GET(request: Request) {
           const { username } = result.data;
 
           const existingVerifiedUser = await UserModel.findOne({
-               username,
+               username: { $regex: new RegExp(`^${username}$`, 'i') }, // to perform case insensitive search where vikas === Vikas
                isVerified: true,
           });
 
