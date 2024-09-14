@@ -1,4 +1,4 @@
-import Navbar from "@/components/custom-ui/NavBar";
+import Navbar from "@/components/custom-ui/Navbar";
 
 interface RootLayoutProps {
   children: React.ReactNode;
