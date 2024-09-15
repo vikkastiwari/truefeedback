@@ -7,7 +7,7 @@ import UserModel from "@/model/User.model";
 import { CustomResponse } from "@/helpers/commonHelpers";
 import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
      await dbConnect();
      const session = await getServerSession(authOptions);
      const user:User = session?.user as User;
