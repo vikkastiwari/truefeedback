@@ -28,7 +28,7 @@ export async function DELETE(request: Request, {params}:{params:{messageid:strin
           if(updatedResult.modifiedCount == 0) {
                return CustomResponse({
                     success: true,
-                    message: "Messages Deleted",
+                    message: "Message deleted successfully!!",
                     status: 200,
                });
           }
